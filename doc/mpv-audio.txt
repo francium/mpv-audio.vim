@@ -1,0 +1,21 @@
+*mpv-audio.txt* Play audio files/URLs under cursor using mpv
+
+CONTENTS                                                   *mpv-audio-contents*
+===============================================================================
+
+1. Commands                                                |mpv-audio-commands|
+
+COMMANDS                                                   *mpv-audio-commands*
+===============================================================================
+
+:MpvPlayAudio                                                   *:MpvPlayAudio*
+    Play audio file/URL undercursor. This works correctly when the path or URL
+    is surrounded by word boundaries. Use |MpvPlayAudioRange| in other cases
+    when this doesn't work.
+
+:MpvPlayAudioRange                                         *:MpvPlayAudioRange*
+    Play selected audio file/URL. Provided more finer control when
+    |MpvPlayAudio| isn't usable.
+
+===============================================================================
+vim:ft=help:tw=78:sw=4:ts=4:cc=
