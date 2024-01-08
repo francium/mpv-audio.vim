@@ -20,4 +20,4 @@ work on Windows currently.
 
 ## Documentation
 
-See `:help mpv-audio.vim`.
+See [mpv-audio.txt](./doc/mpv-audio.txt) or `:help mpv-audio.vim`.
