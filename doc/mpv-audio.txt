@@ -1,19 +1,23 @@
 *mpv-audio.txt* Play audio files/URLs under cursor using mpv
 
-CONTENTS                                                   *mpv-audio-contents*
+CONTENTS *mpv-audio-contents*
 ===============================================================================
 
-1. Commands                                                |mpv-audio-commands|
+1. Commands |mpv-audio-commands|
 
-COMMANDS                                                   *mpv-audio-commands*
+COMMANDS *mpv-audio-commands*
 ===============================================================================
 
-:MpvPlayAudio                                                   *:MpvPlayAudio*
+:MpvPlayAudio *:MpvPlayAudio*
+    Play audio URL on current line. Tries to find URL using regex. Currently
+    limited to just YouTube URLs, but slight improvement on |:MpvPlayAudioV1|.
+
+:MpvPlayAudioV1 *:MpvPlayAudioV1*
     Play audio file/URL undercursor. This works correctly when the path or URL
     is surrounded by word boundaries. Use |MpvPlayAudioRange| in other cases
     when this doesn't work.
 
-:MpvPlayAudioRange                                         *:MpvPlayAudioRange*
+:MpvPlayAudioRange *:MpvPlayAudioRange*
     Play selected audio file/URL. Provided more finer control when
     |MpvPlayAudio| isn't usable.
 

@@ -1,4 +1,5 @@
 let s:AUDIO_PLAYER_BUFFER_NAME = "Audio Player"
+let s:YOUTUBE_URL_REGEX = "https\\?://www.youtube.com/watch?v=\[a-zA-Z0-9_-\]\\+"
 
 function! s:CloseExistingAudioPlayerBuffer()
     for buffer_id in nvim_list_bufs()
@@ -28,7 +29,9 @@ function! s:PlayWithMpv(path)
     normal A
 endfunc
 
-function! s:MpvPlayAudio()
+" Initial implementation that relies on word boundaries to find current URL.
+" Doesn't work in all cases.
+function! s:MpvPlayAudioV1()
     normal viWy
     call s:PlayWithMpv(@")
 endfunc
@@ -41,5 +44,18 @@ function! s:MpvPlayAudioRange() range
     call s:PlayWithMpv(selection)
 endfunc
 
+" Uses a regex to find URL. Currently limited, but lays a foundation for more
+" flexible URL detection.
+function! s:MpvPlayAudio()
+    let l:cur_line = getline(".")
+    let l:url = matchstr(l:cur_line, s:YOUTUBE_URL_REGEX)
+    if empty(l:url)
+        echo "Count not find a URL on current line"
+        return
+    endif
+    call s:PlayWithMpv(l:url)
+endfunc
+
+com! MpvPlayAudioV1 call s:MpvPlayAudioV1()
 com! MpvPlayAudio call s:MpvPlayAudio()
 com! -range MpvPlayAudioRange call s:MpvPlayAudioRange()
