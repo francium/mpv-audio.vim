@@ -26,7 +26,7 @@ function! s:PlayWithMpv(path)
     execute "10split"
     execute "terminal echo Playing " . l:quoted_path . " && mpv --no-video --keep-open=no " . l:quoted_path
     execute "file " . s:AUDIO_PLAYER_BUFFER_NAME
-    normal A
+    execute "normal! \<c-w>p"
 endfunc
 
 " Initial implementation that relies on word boundaries to find current URL.
